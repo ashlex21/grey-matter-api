@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-node');
 const cors = require('cors');
 const knex = require('knex')
@@ -19,15 +18,10 @@ const db = knex({
     }
 });
 
-db.select('*').from('users').then(
-    data => {
-        // console.log(data);
-    }
-);
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors())
 
 app.get('/', (req, res) => {
